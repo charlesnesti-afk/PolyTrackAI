@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>PolyPilot AI</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header class="hdr">
+    <div class="brand">
+      <img src="../icons/icon32.png" width="20" height="20" alt="" />
+      <div>
+        <h1>PolyPilot AI</h1>
+        <p id="status-sub">Checking active Brave tab...</p>
+      </div>
+    </div>
+    <span class="pill" id="mode-pill">OFFLINE</span>
+  </header>
+
+  <section class="stats" id="stats-section">
+    <div class="stat">
+      <span class="k">TRACK</span>
+      <span class="v" id="st-track">—</span>
+    </div>
+    <div class="stat">
+      <span class="k">EPISODES</span>
+      <span class="v" id="st-ep">0</span>
+    </div>
+    <div class="stat">
+      <span class="k">TOP RUNS</span>
+      <span class="v" id="st-top">0</span>
+    </div>
+    <div class="stat">
+      <span class="k">MODEL SIZE</span>
+      <span class="v" id="st-mem">61.4 KB</span>
+    </div>
+  </section>
+
+  <section class="actions" id="connected-actions" hidden>
+    <div class="btn-grid">
+      <button class="btn primary" data-mode="train">Auto Train</button>
+      <button class="btn warn" data-mode="watch">Watch Me</button>
+      <button class="btn info" data-mode="race">Race Best</button>
+      <button class="btn" data-mode="idle">Standby</button>
+    </div>
+    <button class="btn full" id="btn-toggle-hud">Toggle Overlay HUD (Alt+P)</button>
+  </section>
+
+  <section class="actions" id="disconnected-actions">
+    <button class="btn primary full" id="btn-open-polytrack">Open PolyTrack in Brave</button>
+    <button class="btn full" id="btn-inject-mirror">Activate on Custom Mirror Tab</button>
+  </section>
+
+  <footer class="ftr">
+    <span>v3.4.9 · PolyTinyNet-v2 · 15,717 params</span>
+    <span>&lt; 25 MB / 8 GB cap</span>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>

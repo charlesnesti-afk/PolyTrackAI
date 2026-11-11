@@ -1,0 +1,92 @@
+{
+  "manifest_version": 3,
+  "name": "PolyPilot AI — PolyTrack Neural Driver",
+  "short_name": "PolyPilot AI",
+  "version": "3.4.9",
+  "description": "Compact 3D-LIDAR + canvas vision neural driver, live brain visualizer, top-runs trainer, and track brain manager for PolyTrack in Brave.",
+  "permissions": [
+    "storage",
+    "unlimitedStorage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "*://*.kodub.com/*",
+    "*://*/*polytrack*",
+    "*://*/*PolyTrack*",
+    "http://localhost/*",
+    "http://127.0.0.1/*"
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "PolyPilot AI — PolyTrack Neural Driver",
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.kodub.com/*",
+        "*://*/*polytrack*",
+        "*://*/*PolyTrack*",
+        "http://localhost/*",
+        "http://127.0.0.1/*"
+      ],
+      "all_frames": true,
+      "run_at": "document_start",
+      "world": "MAIN",
+      "js": [
+        "src/early_hook.js",
+        "src/pretrained_weights.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.kodub.com/*",
+        "*://*/*polytrack*",
+        "*://*/*PolyTrack*",
+        "http://localhost/*",
+        "http://127.0.0.1/*"
+      ],
+      "all_frames": true,
+      "run_at": "document_start",
+      "world": "ISOLATED",
+      "js": [
+        "src/bridge_isolated.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.kodub.com/*",
+        "*://*/*polytrack*",
+        "*://*/*PolyTrack*",
+        "http://localhost/*",
+        "http://127.0.0.1/*"
+      ],
+      "all_frames": true,
+      "run_at": "document_idle",
+      "world": "MAIN",
+      "js": [
+        "src/vision.js",
+        "src/track3d.js",
+        "src/telemetry.js",
+        "src/controls.js",
+        "src/pretrained_weights.js",
+        "src/brain.js",
+        "src/storage.js",
+        "src/hud.js",
+        "src/agent.js"
+      ]
+    }
+  ]
+}
